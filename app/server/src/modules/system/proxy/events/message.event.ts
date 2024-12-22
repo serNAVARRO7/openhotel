@@ -16,15 +16,15 @@ export const messageEvent: ProxyEventType<{ message: string }> = {
 
     log(`[${room.getId()}] ${user.getUsername()}: ${message}`);
 
-    const isOp = await user.isOp();
-
-    if (isOp && executeCommand({ message, user })) return;
+    if (await executeCommand({ message, user })) return;
 
     user.setLastMessage(message);
     room.emit(ProxyEvent.MESSAGE, {
       accountId: user.getAccountId(),
       message,
-      color: isOp ? 0 : await getRandomNumberFromSeed(user.getUsername()),
+      color: (await user?.isOp())
+        ? 0
+        : await getRandomNumberFromSeed(user.getUsername()),
     });
   },
 };
