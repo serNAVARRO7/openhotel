@@ -1,10 +1,11 @@
-import { Command } from "shared/types/main.ts";
+import { Command, CommandRole } from "shared/types/main.ts";
 import { System } from "modules/system/main.ts";
 import { ProxyEvent } from "shared/enums/main.ts";
 import { __ } from "shared/utils/main.ts";
 
 export const unsetCommand: Command = {
   command: "unset",
+  role: CommandRole.OP,
   func: async ({ user, args }) => {
     if (1 !== args.length) return;
 

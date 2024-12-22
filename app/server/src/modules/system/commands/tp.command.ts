@@ -1,9 +1,10 @@
-import { Command } from "shared/types/main.ts";
+import { Command, CommandRole } from "shared/types/main.ts";
 import { ProxyEvent } from "shared/enums/event.enum.ts";
 import { System } from "modules/system/main.ts";
 
 export const tpCommand: Command = {
   command: "tp",
+  role: CommandRole.OP,
   func: async ({ user, args }) => {
     if (args.length !== 2) return;
 

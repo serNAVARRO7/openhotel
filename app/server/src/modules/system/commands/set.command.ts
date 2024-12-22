@@ -1,4 +1,4 @@
-import { Command, RoomFurniture } from "shared/types/main.ts";
+import { Command, CommandRole, RoomFurniture } from "shared/types/main.ts";
 import { ProxyEvent } from "shared/enums/event.enum.ts";
 import { System } from "modules/system/main.ts";
 import { FurnitureType } from "shared/enums/furniture.enum.ts";
@@ -6,6 +6,7 @@ import { CrossDirection } from "@oh/utils";
 
 export const setCommand: Command = {
   command: "set",
+  role: CommandRole.OP,
   func: async ({ user, args }) => {
     if (3 > args.length) return;
 

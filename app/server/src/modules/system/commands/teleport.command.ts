@@ -1,10 +1,11 @@
-import { Command } from "shared/types/main.ts";
+import { Command, CommandRole } from "shared/types/main.ts";
 import { System } from "modules/system/main.ts";
 import { ProxyEvent } from "shared/enums/event.enum.ts";
 import { __ } from "shared/utils/languages.utils.ts";
 
 export const teleportCommand: Command = {
   command: "teleport",
+  role: CommandRole.OP,
   func: async ({ user, args }) => {
     const [type, ...moreArgs] = args as string[];
 
@@ -28,7 +29,7 @@ export const teleportCommand: Command = {
           user.getAccountId(),
           user.getRoom(),
           teleportIdA,
-          $linkId ?? undefined,
+          $linkId ?? undefined
         );
 
         user.emit(ProxyEvent.SYSTEM_MESSAGE, {

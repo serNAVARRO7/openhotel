@@ -1,10 +1,11 @@
-import { Command } from "shared/types/main.ts";
+import { Command, CommandRole } from "shared/types/main.ts";
 import { ProxyEvent } from "shared/enums/main.ts";
 import { commandList } from "./main.ts";
 import { __ } from "shared/utils/main.ts";
 
 export const helpCommand: Command = {
   command: "help",
+  role: CommandRole.OP,
   func: async ({ user }) => {
     user.emit(ProxyEvent.SYSTEM_MESSAGE, {
       message: __(user.getLanguage())("Available commands: {{commands}}", {

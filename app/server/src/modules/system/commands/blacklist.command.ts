@@ -1,5 +1,6 @@
 import {
   Command,
+  CommandRole,
   ListActions,
   UserMutable,
   UsersConfig,
@@ -42,7 +43,7 @@ const remove = (config: UsersConfig, args: string[], user: UserMutable) => {
       "User {{username}} removed from blacklist",
       {
         username,
-      },
+      }
     ),
   });
   return config;
@@ -58,6 +59,7 @@ const list = (config: UsersConfig, _: string[], user: UserMutable) => {
 
 export const blacklistCommand: Command = {
   command: "blacklist",
+  role: CommandRole.OP,
   func: async ({ user, args }) => {
     const action = args[0] as ListActions;
     if (!action) return;

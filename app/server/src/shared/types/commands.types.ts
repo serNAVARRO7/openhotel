@@ -2,6 +2,7 @@ import { UserMutable } from "./user.types.ts";
 
 export type Command = {
   command: string;
+  role: CommandRole;
   func: (data: {
     args: (string | number)[];
     user: UserMutable;
@@ -9,3 +10,9 @@ export type Command = {
 };
 
 export type ListActions = "on" | "off" | "list" | "add" | "remove";
+
+export enum CommandRole {
+  ROOM_GUEST = "roomGuest",
+  ROOM_OWNER = "roomOwner",
+  OP = "op",
+}
